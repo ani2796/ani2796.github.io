@@ -1,0 +1,63 @@
+name: Deploy
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Setup Node
+        uses: actions/setup-node@v3
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build project
+        run: npm run build
+
+      - name: View downlaods in dist
+        run: ls -alR dist
+
+      - name: View current dir
+        run: pwd
+
+      - name: Upload production-ready build files
+        uses: actions/upload-pages-artifact@v1
+        with:
+          name: github-pages
+          path: ./dist
+          if-no-files-found: error
+
+  deploy:
+    name: Deploy
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      pages: write
+    environment:
+      name: github-pages
+      url: ${{steps.deployment.outputs.page_url}}
+
+    steps:
+      - name: Download artifact
+        uses: actions/download-artifact@v3
+        with:
+          path: ./
+
+      - name: View all in current folder
+        run: ls -alR
+
+      - name: View current folder loc
+        run: pwd
+
+      - name: Deploy to GitHub Pages
+        uses: actions/deploy-pages@v2
