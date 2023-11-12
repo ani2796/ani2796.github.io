@@ -5,7 +5,7 @@ import Header from './components/Header';
 import Page from './components/Page';
 
 function App() {
-    const [pageName, setPageName] = useState('home');
+    const [pageName, _] = useState('home');
 
     return (
         <>
