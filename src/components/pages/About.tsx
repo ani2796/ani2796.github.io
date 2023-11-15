@@ -1,5 +1,5 @@
 const About = () => {
-    return <img src="./src/assets/dp.jpeg"></img>;
+    return <img src="./assets/dp.jpeg"></img>;
 };
 
 export default About;
