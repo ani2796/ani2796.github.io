@@ -1,5 +1,7 @@
+import logo from '/dp.jpeg';
+
 const About = () => {
-    return <img src="./assets/dp.jpeg"></img>;
+    return <img src={logo}></img>;
 };
 
 export default About;

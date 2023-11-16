@@ -2,9 +2,9 @@
     "compilerOptions": {
         "baseUrl": "src",
         "paths": {
-            "@components/*": ["./components/*"],
-            "@pages/*": ["./components/pages/*"],
-            "@images/*": ["./images/*"]
+            "@components/*": ["components/*"],
+            "@pages/*": ["components/pages/*"],
+            "@images/*": ["assets/*"]
         },
         "target": "ES2020",
         "useDefineForClassFields": true,
